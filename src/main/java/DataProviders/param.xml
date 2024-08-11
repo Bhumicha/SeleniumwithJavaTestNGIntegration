@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!-- launch browsers in sequence one by one-->
 <suite name="Test3">
+    <!-- -->
+    <!-- <suite name="Test3" thread-count="5" name="Suite" parallel="tests"> -->
     <test thread-count = "5" name="paramtest">
         <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="DataProviders.ParamTest"/>
+        </classes>
+    </test>
+    <test thread-count = "5" name="paramtest2">
+        <parameter name="browser" value="edge"></parameter>
         <classes>
             <class name="DataProviders.ParamTest"/>
         </classes>
