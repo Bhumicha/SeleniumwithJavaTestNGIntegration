@@ -20,12 +20,12 @@ public class DataProdiverDemo {
         driver= new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
-    @Test
-    void testLogin() throws InterruptedException {
+    @Test(dataProvider = "dp")
+    void testLogin(String email, String pwd) throws InterruptedException {
         driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
         driver.manage().window().maximize();
-        driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys("bhumicha611@gmail.com");
-        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("password");
+        driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys(email);
+        driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(pwd);
         driver.findElement(By.xpath("//input[@value='Login']")).click();
         Thread.sleep(2000);
         boolean status=driver.findElement(By.xpath("//h2[normalize-space()='My Account']")).isDisplayed();
@@ -45,13 +45,12 @@ public class DataProdiverDemo {
         driver.close();
     }
 
-    @DataProvider
-    String [][] loginData()
+    @DataProvider (name="dp")
+    Object [][] loginData()
     {
-        String data[][]={
+        Object data[][]={
                 {"abs@gmail.com", "test123"},
-                {"bhumicha611@gmail", "password"}
-
+                {"bhumicha611@gmail.com", "password"}
         };
         return data;
     }
