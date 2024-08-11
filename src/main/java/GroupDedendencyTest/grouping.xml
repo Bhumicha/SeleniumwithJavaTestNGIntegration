@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="GroupDependencyTest">
+    <test thread-count = "5" name="groupingtest1">
+        <groups>
+            <run>
+                //include the group you want to run test on
+                <include name="sanity"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="GroupDedendencyTest.LoginTests"/>
+            <class name="GroupDedendencyTest.SignupTests"/>
+            <class name="GroupDedendencyTest.PaymentTests"/>
+        </classes>
+    </test>
+</suite>
