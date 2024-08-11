@@ -45,12 +45,13 @@ public class DataProdiverDemo {
         driver.close();
     }
 
-    @DataProvider (name="dp")
+    @DataProvider (name="dp", indices={0, 1})
     Object [][] loginData()
     {
         Object data[][]={
                 {"abs@gmail.com", "test123"},
-                {"bhumicha611@gmail.com", "password"}
+                {"bhumicha611@gmail.com", "password"},
+                {"xyz@gmail.com", "owd"}
         };
         return data;
     }
